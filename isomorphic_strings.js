@@ -14,3 +14,22 @@
 
 // Input: s = "paper", t = "title"
 // Output: true
+
+let isIsomorphic = function(s, t) {
+    //hash maps for each string: e>a, g>d
+    let mapST = {}
+    let mapTS = {}
+
+    for(let i=0; i<s.length; i++){
+        //get each char from the 2 strings
+        let c1 = s[i]
+        let c2 = t[i]
+        //if the character already been mapped and not equal to the next value
+        if((mapST[c1] && mapST[c1] != c2) || (mapTS[c2] && mapTS[c2] != c1)){
+            return false
+        }
+        //set the mappings
+        mapST[c1] = c2
+        mapTS[c2] = c1
+    }
+}
